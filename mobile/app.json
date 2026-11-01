@@ -25,7 +25,8 @@
       "permissions": [
         "CAMERA",
         "POST_NOTIFICATIONS",
-        "android.permission.CAMERA"
+        "android.permission.CAMERA",
+        "REQUEST_INSTALL_PACKAGES"
       ],
       "googleServicesFile": "./google-services.json"
     },

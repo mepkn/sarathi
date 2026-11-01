@@ -1,9 +1,11 @@
 import { router } from "expo-router";
-import { ArrowLeftIcon, QrCodeIcon, UnlinkIcon } from "lucide-react-native";
+import { ArrowLeftIcon, QrCodeIcon, RefreshCwIcon, UnlinkIcon } from "lucide-react-native";
 import { Alert, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, IconButton } from "@/components/button";
 import { useDeck } from "@/lib/deck";
+import { currentCommit } from "@/lib/update";
+import { runUpdateCheck } from "@/lib/use-update-check";
 
 export default function SettingsScreen() {
   const { mac, link, unpair } = useDeck();
@@ -41,6 +43,12 @@ export default function SettingsScreen() {
         >
           Unpair
         </Button>
+        <View className="gap-3">
+          <Text className="text-xs text-muted-foreground">Version {currentCommit}</Text>
+          <Button variant="outline" icon={RefreshCwIcon} onPress={() => void runUpdateCheck(true)}>
+            Check for updates
+          </Button>
+        </View>
       </View>
     </SafeAreaView>
   );

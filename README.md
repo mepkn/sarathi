@@ -20,7 +20,8 @@ your phone.
 - **Phone**: pair the Android app by QR code (phone button in the sidebar). It lists the
   sessions, shows the chat, sends messages, answers menus, has quick keys (Esc, Ctrl-C, arrows,
   Enter, Tab, ⇧Tab) and starts, sleeps, wakes and closes sessions. A push says when an agent needs
-  you or finishes; its text is generic ("Claude Code needs you").
+  you or finishes; its text is generic ("Claude Code needs you"). It checks for a newer APK on
+  launch and from Settings → Check for updates, installs it, and deletes the download afterwards.
 - Phone and Mac talk end to end encrypted through a small relay; the relay can't read them.
 - Single user: no sign-in. The Mac trusts phones it paired with; a pairing code works once, for
   5 minutes.
@@ -98,6 +99,12 @@ Set `AGENTDECK_RELAY` (e.g. `ws://localhost:8090/relay`) to point the Mac at a l
   `agentdeck-macos.zip` to a temp folder, quits, swaps the `.app` in place (putting the old one back
   if that fails), deletes the download and relaunches. The app's folder must be writable. A release
   made for an Android-only change also counts as an update. Builds without a SHA skip the check.
+- **Phone updates** (`mobile/src/lib/update.ts`): the Release workflow builds the APK with
+  `EXPO_PUBLIC_COMMIT` set to the same short SHA. On launch the app asks GitHub for the latest
+  release; a different tag offers the update. `agentdeck.apk` is downloaded to the app's cache
+  (`update/`) and opened with `INSTALL_PACKAGE` (needs `REQUEST_INSTALL_PACKAGES`; Android asks once
+  to allow installs from agentdeck). Every launch deletes that folder. Dev builds skip the check. An
+  APK downloaded by hand in a browser isn't the app's to delete.
 - **Phone link** (`desktop/internal/remote`, `mobile/src/lib/link.ts`): each device has an Ed25519
   key (its relay ID) and an X25519 key. The relay checks a signed challenge, then forwards opaque
   blobs between IDs and reports who is online. Messages are sealed with X25519 + HKDF-SHA256 +

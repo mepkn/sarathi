@@ -11,12 +11,14 @@ import { KeyboardProvider } from "react-native-keyboard-controller";
 import { DeckProvider, useDeck } from "@/lib/deck";
 import { sessionFrom } from "@/lib/notifications";
 import { NAV_THEME } from "@/lib/theme";
+import { useUpdateCheck } from "@/lib/use-update-check";
 
 void SplashScreen.preventAutoHideAsync();
 
 function Root() {
   const { loaded, mac } = useDeck();
   const response = Notifications.useLastNotificationResponse();
+  useUpdateCheck();
 
   useEffect(() => {
     if (loaded) void SplashScreen.hideAsync();

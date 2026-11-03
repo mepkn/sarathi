@@ -13,7 +13,7 @@ your phone.
 - Menus the agent waits on (approvals, "trust this folder?") appear as a card with buttons.
 - Sleep stops the agent and keeps the session; Wake resumes it. Close removes it.
 - The session bar opens the project in Finder, Terminal or Zed, or in
-  [gitdeck](https://github.com/mepkn/gitdeck) (git client with VS Code-style diffs).
+  [Chitragupta](https://github.com/mepkn/chitragupta) (git client with VS Code-style diffs).
 - Agents keep running with the window closed; the menu bar icon shows how many need you.
 - Checks for updates on launch and from Sarathi → Check for Updates… in the menu bar;
   installs the latest GitHub release and restarts (running agents stop).

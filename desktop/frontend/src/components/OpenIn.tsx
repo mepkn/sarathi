@@ -98,13 +98,13 @@ export function OpenInButton({ projectId }: { projectId: string }) {
   );
 }
 
-function openGitdeck(projectId: string) {
-  Deck.OpenGitdeck(projectId).catch((e) => {
-    const msg = errorMessage(e, "Could not open gitdeck.");
-    if (msg.includes("gitdeck is not installed")) {
-      toast("gitdeck is not installed", {
+function openChitragupta(projectId: string) {
+  Deck.OpenChitragupta(projectId).catch((e) => {
+    const msg = errorMessage(e, "Could not open Chitragupta.");
+    if (msg.includes("Chitragupta is not installed")) {
+      toast("Chitragupta is not installed", {
         description: "Download it, move it to Applications, then try again.",
-        action: { label: "Download", onClick: () => void Browser.OpenURL(GITDECK_DOWNLOAD) },
+        action: { label: "Download", onClick: () => void Browser.OpenURL(CHITRAGUPTA_DOWNLOAD) },
       });
     } else {
       toast.error(msg);
@@ -112,16 +112,16 @@ function openGitdeck(projectId: string) {
   });
 }
 
-const GITDECK_DOWNLOAD = "https://github.com/mepkn/gitdeck/releases/latest/download/gitdeck-macos.zip";
+const CHITRAGUPTA_DOWNLOAD = "https://github.com/mepkn/chitragupta/releases/latest/download/chitragupta-macos.zip";
 
-// Button that opens the project in gitdeck, the git client with VS Code-style diffs.
-export function GitdeckButton({ projectId }: { projectId: string }) {
+// Button that opens the project in Chitragupta, the git client with VS Code-style diffs.
+export function ChitraguptaButton({ projectId }: { projectId: string }) {
   return (
     <button
       type="button"
-      onClick={() => openGitdeck(projectId)}
-      title="Open in gitdeck"
-      aria-label="Open in gitdeck"
+      onClick={() => openChitragupta(projectId)}
+      title="Open in Chitragupta"
+      aria-label="Open in Chitragupta"
       className="no-drag flex h-7 items-center rounded-md px-2 text-muted-foreground hover:bg-muted hover:text-foreground"
     >
       <GitBranchIcon className="size-4" />

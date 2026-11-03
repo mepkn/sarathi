@@ -69,10 +69,10 @@ export function OpenApps(): $CancellablePromise<string[] | null> {
 }
 
 /**
- * OpenGitdeck opens a project in gitdeck, the companion git client, through
- * its gitdeck://open link.
+ * OpenChitragupta opens a project in Chitragupta, the companion git client, through
+ * its chitragupta://open link.
  */
-export function OpenGitdeck(projectID: string): $CancellablePromise<void> {
+export function OpenChitragupta(projectID: string): $CancellablePromise<void> {
     return $Call.ByID(3358473537, projectID);
 }
 

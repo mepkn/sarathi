@@ -56,19 +56,19 @@ func (d *DeckService) OpenIn(projectID, app string) error {
 	return errors.New("unknown app: " + app)
 }
 
-// ErrNoGitdeck tells the frontend to offer downloading gitdeck.
-const ErrNoGitdeck = "gitdeck is not installed"
+// ErrNoChitragupta tells the frontend to offer downloading Chitragupta.
+const ErrNoChitragupta = "Chitragupta is not installed"
 
-// OpenGitdeck opens a project in gitdeck, the companion git client, through
-// its gitdeck://open link.
-func (d *DeckService) OpenGitdeck(projectID string) error {
+// OpenChitragupta opens a project in Chitragupta, the companion git client, through
+// its chitragupta://open link.
+func (d *DeckService) OpenChitragupta(projectID string) error {
 	p, ok := d.st.Project(projectID)
 	if !ok {
 		return errors.New("project not found")
 	}
-	if installedApp([]string{"Gitdeck"}) == "" {
-		return errors.New(ErrNoGitdeck)
+	if installedApp([]string{"Chitragupta"}) == "" {
+		return errors.New(ErrNoChitragupta)
 	}
-	link := "gitdeck://open?" + url.Values{"path": {p.Path}}.Encode()
+	link := "chitragupta://open?" + url.Values{"path": {p.Path}}.Encode()
 	return exec.Command("open", link).Run()
 }

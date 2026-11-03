@@ -1,4 +1,4 @@
-module github.com/mepkn/agentdeck/relay
+module github.com/mepkn/sarathi/relay
 
 go 1.25.0
 

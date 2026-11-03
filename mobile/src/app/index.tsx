@@ -51,7 +51,7 @@ export default function SessionsScreen() {
     <SafeAreaView className="flex-1 bg-background" edges={["top", "left", "right"]}>
       <View className="h-14 flex-row items-center pr-2 pl-5">
         <View className="flex-1">
-          <Text className="text-xl font-semibold text-foreground">agentdeck</Text>
+          <Text className="text-xl font-semibold text-foreground">Sarathi</Text>
           <View className="flex-row items-center gap-1.5">
             <View
               className={cn(
@@ -87,7 +87,7 @@ export default function SessionsScreen() {
         {!state && link === "online" && <ActivityIndicator className="mt-16" color={colors.muted} />}
         {state && state.projects.length === 0 && (
           <Text className="mt-16 px-8 text-center text-muted-foreground">
-            No projects yet. Add a project folder in agentdeck on the Mac.
+            No projects yet. Add a project folder in Sarathi on the Mac.
           </Text>
         )}
         {state?.projects.map((p) => {

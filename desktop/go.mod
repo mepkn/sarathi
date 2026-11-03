@@ -1,4 +1,4 @@
-module github.com/mepkn/agentdeck/desktop
+module github.com/mepkn/sarathi/desktop
 
 go 1.26.0
 
@@ -17,9 +17,9 @@ require (
 	github.com/godbus/dbus/v5 v5.2.2 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
-	github.com/mepkn/agentdeck/relay v0.0.0
+	github.com/mepkn/sarathi/relay v0.0.0
 	golang.org/x/crypto v0.58.0
 	golang.org/x/sys v0.49.0 // indirect
 )
 
-replace github.com/mepkn/agentdeck/relay => ../relay
+replace github.com/mepkn/sarathi/relay => ../relay

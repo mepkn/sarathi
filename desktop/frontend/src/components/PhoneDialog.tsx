@@ -39,7 +39,7 @@ export function PhoneDialog({ open, onOpenChange, status }: Props) {
         <DialogHeader>
           <DialogTitle>Phone</DialogTitle>
           <DialogDescription>
-            Follow and answer your agents from the agentdeck Android app. Messages are end-to-end encrypted; the relay
+            Follow and answer your agents from the Sarathi Android app. Messages are end-to-end encrypted; the relay
             can't read them.
           </DialogDescription>
         </DialogHeader>
@@ -49,7 +49,7 @@ export function PhoneDialog({ open, onOpenChange, status }: Props) {
             <img src={qr} alt="Pairing QR code" className="size-56 rounded-lg bg-white p-2" />
             <p className="flex items-center gap-2 text-xs text-muted-foreground">
               {status?.connected ? (
-                "Scan with the agentdeck app. The code works once, for 5 minutes."
+                "Scan with the Sarathi app. The code works once, for 5 minutes."
               ) : (
                 <>
                   <Loader2Icon className="size-3 animate-spin" /> Connecting to the relay…

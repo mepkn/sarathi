@@ -12,9 +12,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mepkn/agentdeck/desktop/internal/agents"
-	"github.com/mepkn/agentdeck/desktop/internal/shellenv"
-	"github.com/mepkn/agentdeck/desktop/internal/store"
+	"github.com/mepkn/sarathi/desktop/internal/agents"
+	"github.com/mepkn/sarathi/desktop/internal/shellenv"
+	"github.com/mepkn/sarathi/desktop/internal/store"
 )
 
 type recorder struct {
@@ -55,7 +55,7 @@ func TestSmoke(t *testing.T) {
 	dir := t.TempDir()
 	dir, _ = filepath.EvalSymlinks(dir)
 	// Not t.TempDir: a watcher may still save state as the test ends.
-	stateDir, _ := os.MkdirTemp("", "agentdeck-smoke")
+	stateDir, _ := os.MkdirTemp("", "sarathi-smoke")
 	t.Cleanup(func() { _ = os.RemoveAll(stateDir) })
 	st, err := store.Open(filepath.Join(stateDir, "state.json"))
 	if err != nil {

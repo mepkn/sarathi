@@ -14,7 +14,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mepkn/agentdeck/desktop/internal/agents"
+	"github.com/mepkn/sarathi/desktop/internal/agents"
 )
 
 // Match is one prompt that matched a search.

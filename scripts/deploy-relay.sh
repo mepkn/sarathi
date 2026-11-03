@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Builds and (re)starts the relay on the VPS with Docker Compose, in RELAY_DIR
-# (e.g. ~/agentdeck-relay), and installs its Caddy site. Dockhand shows it as a stack.
+# (e.g. ~/sarathi-relay), and installs its Caddy site. Dockhand shows it as a stack.
 # Server details live in relay/.env.prod.local (git-ignored; see relay/.env.example).
 #   scripts/deploy-relay.sh            DRY_RUN=1 scripts/deploy-relay.sh
 set -euo pipefail
@@ -22,7 +22,7 @@ rsync -avz ${dry[@]+"${dry[@]}"} -e "ssh -p $DEPLOY_PORT" \
   --include Dockerfile --include compose.yaml --include go.mod --include go.sum \
   --exclude '*_test.go' --exclude deploy --include '*/' --include '*.go' --exclude '*' \
   relay/ "$DEPLOY_HOST:$RELAY_DIR/"
-rsync -avz ${dry[@]+"${dry[@]}"} -e "ssh -p $DEPLOY_PORT" relay/deploy/agentdeck.caddy "$DEPLOY_HOST:/etc/caddy/sites/agentdeck.caddy"
+rsync -avz ${dry[@]+"${dry[@]}"} -e "ssh -p $DEPLOY_PORT" relay/deploy/sarathi.caddy "$DEPLOY_HOST:/etc/caddy/sites/sarathi.caddy"
 if [ -n "${DRY_RUN:-}" ]; then
   echo "Dry run: nothing started."
   exit 0

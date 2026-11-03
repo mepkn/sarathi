@@ -7,7 +7,7 @@ export function LinkBanner() {
   if (link === "online") return null;
   const text =
     link === "away"
-      ? `${mac?.name ?? "Your Mac"} is offline. Open agentdeck on the Mac, or wake it.`
+      ? `${mac?.name ?? "Your Mac"} is offline. Open Sarathi on the Mac, or wake it.`
       : "Connecting to the relay…";
   return (
     <View className="mx-4 mb-2 rounded-xl border border-border bg-card px-4 py-3">

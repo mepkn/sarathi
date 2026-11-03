@@ -8,11 +8,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mepkn/agentdeck/desktop/internal/history"
-	"github.com/mepkn/agentdeck/desktop/internal/remote"
-	"github.com/mepkn/agentdeck/desktop/internal/sessions"
-	"github.com/mepkn/agentdeck/desktop/internal/shellenv"
-	"github.com/mepkn/agentdeck/desktop/internal/store"
+	"github.com/mepkn/sarathi/desktop/internal/history"
+	"github.com/mepkn/sarathi/desktop/internal/remote"
+	"github.com/mepkn/sarathi/desktop/internal/sessions"
+	"github.com/mepkn/sarathi/desktop/internal/shellenv"
+	"github.com/mepkn/sarathi/desktop/internal/store"
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"github.com/wailsapp/wails/v3/pkg/events"
 )
@@ -104,7 +104,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	relay := os.Getenv("AGENTDECK_RELAY")
+	relay := os.Getenv("SARATHI_RELAY")
 	if relay == "" {
 		relay = remote.DefaultRelay
 	}
@@ -121,7 +121,7 @@ func main() {
 	ev.r = r
 
 	app := application.New(application.Options{
-		Name:        "agentdeck",
+		Name:        "sarathi",
 		Description: "Chat and terminal views for AI coding agent CLIs",
 		Services: []application.Service{
 			application.NewService(deck),
@@ -141,7 +141,7 @@ func main() {
 	ev.app = app
 
 	window := app.Window.NewWithOptions(application.WebviewWindowOptions{
-		Title:     "agentdeck",
+		Title:     "Sarathi",
 		Width:     1200,
 		Height:    780,
 		MinWidth:  720,
@@ -168,7 +168,7 @@ func main() {
 		window.Focus()
 	})
 
-	// App menu (under "agentdeck" in the menu bar) with Check for Updates….
+	// App menu (under "Sarathi" in the menu bar) with Check for Updates….
 	updates := &updater{app: app}
 	updates.cleanup()
 	appMenu := app.NewMenu()
@@ -183,7 +183,7 @@ func main() {
 	appMenu.AddSeparator()
 	appMenu.AddRole(application.Quit)
 	menuBar := app.NewMenu()
-	menuBar.AddSubmenu("agentdeck").Append(appMenu)
+	menuBar.AddSubmenu("Sarathi").Append(appMenu)
 	menuBar.AddRole(application.EditMenu)
 	menuBar.AddRole(application.WindowMenu)
 	app.Menu.Set(menuBar)
@@ -196,7 +196,7 @@ func main() {
 	})
 
 	menu := application.NewMenu()
-	menu.Add("Open agentdeck").OnClick(func(*application.Context) {
+	menu.Add("Open Sarathi").OnClick(func(*application.Context) {
 		window.Show()
 		window.Focus()
 	})
@@ -204,7 +204,7 @@ func main() {
 	menu.Add("Quit (stops all agents)").OnClick(func(*application.Context) { app.Quit() })
 	tray := app.SystemTray.New()
 	tray.SetTemplateIcon(trayIcon)
-	tray.SetTooltip("agentdeck")
+	tray.SetTooltip("Sarathi")
 	tray.SetMenu(menu)
 	ev.tray = tray
 

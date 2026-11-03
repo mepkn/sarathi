@@ -439,7 +439,7 @@ func hiddenUserText(s string) bool {
 		strings.HasPrefix(s, "<task-notification>") ||
 		strings.HasPrefix(s, "Caveat:") ||
 		strings.HasPrefix(s, "[Request interrupted") ||
-		// Typed by agentdeck to open the model list.
+		// Typed by Sarathi to open the model list.
 		cleanUserText(s) == "/model"
 }
 

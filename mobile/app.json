@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "agentdeck",
-    "slug": "agentdeck",
+    "name": "Sarathi",
+    "slug": "sarathi",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "agentdeck",
+    "scheme": "sarathi",
     "userInterfaceStyle": "dark",
     "backgroundColor": "#0d0e11",
     "ios": {
       "icon": "./assets/images/icon.png",
-      "bundleIdentifier": "com.pknspace.agentdeck"
+      "bundleIdentifier": "com.pknspace.sarathi"
     },
     "android": {
       "adaptiveIcon": {
@@ -20,7 +20,7 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.pknspace.agentdeck",
+      "package": "com.pknspace.sarathi",
       "softwareKeyboardLayoutMode": "resize",
       "permissions": [
         "CAMERA",
@@ -45,7 +45,7 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "agentdeck uses the camera to scan the pairing code shown on your Mac.",
+          "cameraPermission": "Sarathi uses the camera to scan the pairing code shown on your Mac.",
           "recordAudioAndroid": false
         }
       ],
@@ -65,7 +65,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "c8ab98eb-3fe6-4e29-aff3-7c7efd204c0a"
+        "projectId": "6683aaec-edee-4a52-87bd-c15a50a5751a"
       }
     },
     "owner": "mepkn",

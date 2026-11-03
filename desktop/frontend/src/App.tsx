@@ -14,7 +14,7 @@ export default function App() {
   const { projects, sessions, agents, loaded, reloadProjects } = useDeck();
   const [selected, setSelected] = useState<string | null>(null);
   const session = selected ? sessions[selected] : undefined;
-  const [sidebarShown, toggleSidebar] = useStoredToggle("agentdeck.sidebarShown", true);
+  const [sidebarShown, toggleSidebar] = useStoredToggle("sarathi.sidebarShown", true);
   const [searchOpen, setSearchOpen] = useState(false);
 
   // ⌘K searches past prompts.

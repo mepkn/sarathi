@@ -16,13 +16,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mepkn/agentdeck/desktop/internal/agents"
-	"github.com/mepkn/agentdeck/desktop/internal/sessions"
-	"github.com/mepkn/agentdeck/desktop/internal/store"
+	"github.com/mepkn/sarathi/desktop/internal/agents"
+	"github.com/mepkn/sarathi/desktop/internal/sessions"
+	"github.com/mepkn/sarathi/desktop/internal/store"
 )
 
 const (
-	DefaultRelay = "wss://agentdeck.pknspace.com/relay"
+	DefaultRelay = "wss://sarathi.pknspace.com/relay"
 	pairingTTL   = 5 * time.Minute
 	// Messages older than this, or seen before, are dropped.
 	maxAge = 10 * time.Minute
@@ -157,7 +157,7 @@ func DefaultPath() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(dir, "agentdeck", "remote.json"), nil
+	return filepath.Join(dir, "sarathi", "remote.json"), nil
 }
 
 func (r *Remote) saveLocked() error {
@@ -528,7 +528,7 @@ func (r *Remote) SessionChanged(i sessions.Info) {
 	}
 	// Push text goes through Expo and Google, so it says nothing about the work.
 	for _, t := range tokens {
-		go r.push(t, title, "Open agentdeck to see it.", i.ID)
+		go r.push(t, title, "Open Sarathi to see it.", i.ID)
 	}
 }
 

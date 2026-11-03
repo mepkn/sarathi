@@ -1,4 +1,4 @@
-// Draws the agentdeck mark (a green terminal card on a darker one), as in desktop/build/appicon.png.
+// Draws the Sarathi mark (a green terminal card on a darker one), as in desktop/build/appicon.png.
 import { Resvg } from "@resvg/resvg-js";
 import { writeFileSync } from "node:fs";
 

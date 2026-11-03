@@ -21,7 +21,7 @@ const ICONS: Record<string, typeof FolderOpenIcon> = {
 };
 
 // The last app picked becomes the folder button's default, remembered across launches.
-const LAST_KEY = "agentdeck.openIn";
+const LAST_KEY = "sarathi.openIn";
 const listeners = new Set<() => void>();
 
 function readLast() {

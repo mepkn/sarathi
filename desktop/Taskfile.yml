@@ -2,7 +2,7 @@ version: '3'
 
 # macOS only. `wails3 dev` / `wails3 build` / `wails3 package` call these tasks.
 vars:
-  APP_NAME: "agentdeck"
+  APP_NAME: "sarathi"
   BIN_DIR: "bin"
   PACKAGE_MANAGER: 'npm'
   VITE_PORT: '{{.WAILS_VITE_PORT | default 9245}}'
@@ -18,7 +18,7 @@ tasks:
       - task: darwin:build
 
   package:
-    summary: Packages a production build of the application (agentdeck.app)
+    summary: Packages a production build of the application (sarathi.app)
     cmds:
       - task: darwin:package
 

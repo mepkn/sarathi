@@ -12,7 +12,7 @@ import (
 
 // go test -tags live -run Live ./hub/ checks the deployed relay end to end.
 func TestLive(t *testing.T) {
-	url := "wss://agentdeck.pknspace.com/relay"
+	url := "wss://sarathi.pknspace.com/relay"
 	_, ka, _ := ed25519.GenerateKey(nil)
 	_, kb, _ := ed25519.GenerateKey(nil)
 	a, fa := dial(t, url, ka)

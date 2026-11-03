@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-const marker = "__AGENTDECK_PATH__"
+const marker = "__SARATHI_PATH__"
 
 // Load sets PATH from `$SHELL -l -i`, keeping the current one on failure.
 func Load() {

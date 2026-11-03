@@ -13,9 +13,9 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/mepkn/agentdeck/desktop/internal/agents"
-	"github.com/mepkn/agentdeck/desktop/internal/screen"
-	"github.com/mepkn/agentdeck/desktop/internal/store"
+	"github.com/mepkn/sarathi/desktop/internal/agents"
+	"github.com/mepkn/sarathi/desktop/internal/screen"
+	"github.com/mepkn/sarathi/desktop/internal/store"
 )
 
 const (
@@ -80,7 +80,7 @@ type live struct {
 	offset  int64
 	partial []byte
 	saved   time.Time
-	// When agentdeck last stopped the CLI; log writes after it came from
+	// When Sarathi last stopped the CLI; log writes after it came from
 	// somewhere else.
 	stopped time.Time
 }
@@ -99,7 +99,7 @@ type Manager struct {
 func New(st *store.Store, ev Events) *Manager {
 	m := &Manager{st: st, ev: ev, live: map[string]*live{}}
 	if dir, err := os.UserCacheDir(); err == nil {
-		m.statusDir = filepath.Join(dir, "agentdeck", "status")
+		m.statusDir = filepath.Join(dir, "sarathi", "status")
 	}
 	for _, s := range st.Sessions() {
 		a, ok := agents.Get(s.Agent)
@@ -165,7 +165,7 @@ func (m *Manager) Start(projectID, agentID string) (Info, error) {
 }
 
 // OpenPast returns the session for agentSessionID, adding it asleep (and
-// its folder as a project) if agentdeck doesn't have it yet.
+// its folder as a project) if Sarathi doesn't have it yet.
 func (m *Manager) OpenPast(agentID, agentSessionID, dir, title string, updatedAt int64) (Info, error) {
 	a, ok := agents.Get(agentID)
 	if !ok {
@@ -201,7 +201,7 @@ func (m *Manager) OpenPast(agentID, agentSessionID, dir, title string, updatedAt
 }
 
 // ActiveElsewhere reports whether a sleeping session's log was written in
-// the last two minutes by something other than agentdeck, such as Claude
+// the last two minutes by something other than sarathi, such as Claude
 // Code in a terminal; waking it then would run two CLIs on one log.
 func (m *Manager) ActiveElsewhere(id string) bool {
 	m.mu.Lock()

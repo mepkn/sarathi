@@ -19,8 +19,8 @@ type View = "chat" | "terminal";
 export function SessionView({ session, project, agent }: { session: Info; project?: Project; agent?: AgentInfo }) {
   const agentName = agent?.name ?? session.agent;
   const [view, setView] = useState<View>("chat");
-  const [controlsShown, toggleControls] = useStoredToggle("agentdeck.controlsShown", true);
-  const [summary, toggleSummary] = useStoredToggle("agentdeck.summary", false);
+  const [controlsShown, toggleControls] = useStoredToggle("sarathi.controlsShown", true);
+  const [summary, toggleSummary] = useStoredToggle("sarathi.summary", false);
   const asleep = session.status === "asleep";
   const working = session.status === "working" || session.status === "starting";
   const dot = dotFor(session);

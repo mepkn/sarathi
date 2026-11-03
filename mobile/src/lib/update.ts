@@ -8,8 +8,8 @@ import { Platform } from "react-native";
 // the latest GitHub release means an update. The APK is downloaded into the
 // app's cache and handed to Android's installer; the next launch deletes it.
 
-const REPO = "mepkn/agentdeck";
-const ASSET = "agentdeck.apk";
+const REPO = "mepkn/sarathi";
+const ASSET = "sarathi.apk";
 const UPDATE_DIR = new Directory(Paths.cache, "update");
 
 export const currentCommit = process.env.EXPO_PUBLIC_COMMIT || "dev";

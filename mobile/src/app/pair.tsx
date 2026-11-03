@@ -10,7 +10,7 @@ import { useDeck } from "@/lib/deck";
 import { parsePairCode } from "@/lib/pairing";
 import { colors } from "@/lib/theme";
 
-// Reached at start, or from agentdeck://pair?d=… when the system camera scans the Mac's code.
+// Reached at start, or from sarathi://pair?d=… when the system camera scans the Mac's code.
 export default function PairScreen() {
   const { d } = useLocalSearchParams<{ d?: string }>();
   const { pair, mac } = useDeck();
@@ -25,7 +25,7 @@ export default function PairScreen() {
     tried.current = value;
     const code = parsePairCode(value);
     if (!code) {
-      setError("That isn't an agentdeck pairing code.");
+      setError("That isn't a Sarathi pairing code.");
       return;
     }
     setBusy(true);
@@ -43,7 +43,7 @@ export default function PairScreen() {
 
   useEffect(() => {
     // Only when a link opens this screen; after this render, since submit sets state.
-    if (d) queueMicrotask(() => void submit(`agentdeck://pair?d=${d}`));
+    if (d) queueMicrotask(() => void submit(`sarathi://pair?d=${d}`));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [d]);
 
@@ -55,7 +55,7 @@ export default function PairScreen() {
       <View className="flex-1 px-6">
         <Text className="text-3xl font-semibold text-foreground">Pair with your Mac</Text>
         <Text className="mt-2 text-[15px] leading-6 text-muted-foreground">
-          On the Mac, open agentdeck, click the phone button in the sidebar and choose Pair a phone. Then scan the code.
+          On the Mac, open Sarathi, click the phone button in the sidebar and choose Pair a phone. Then scan the code.
         </Text>
 
         <View className="mt-6 aspect-square w-full overflow-hidden rounded-3xl border border-border bg-card">
@@ -79,7 +79,7 @@ export default function PairScreen() {
           <TextInput
             value={text}
             onChangeText={setText}
-            placeholder="agentdeck://pair?d=…"
+            placeholder="sarathi://pair?d=…"
             placeholderTextColor={colors.muted}
             autoCapitalize="none"
             autoCorrect={false}

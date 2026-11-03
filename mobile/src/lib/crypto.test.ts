@@ -52,7 +52,7 @@ describe("parsePairCode", () => {
 
   it("reads the link and the bare value", () => {
     const want = { relay: "wss://relay.example/relay", id: "ID", box: "KEY", secret: "SECRET", name: "Studio" };
-    expect(parsePairCode(`agentdeck://pair?d=${d}`)).toEqual(want);
+    expect(parsePairCode(`sarathi://pair?d=${d}`)).toEqual(want);
     expect(parsePairCode(` ${d} `)).toEqual(want);
   });
 

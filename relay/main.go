@@ -1,4 +1,4 @@
-// Command relay passes end-to-end encrypted messages between the agentdeck
+// Command relay passes end-to-end encrypted messages between the Sarathi
 // Mac app and paired phones; it never sees message contents.
 package main
 
@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/mepkn/agentdeck/relay/hub"
+	"github.com/mepkn/sarathi/relay/hub"
 )
 
 func main() {

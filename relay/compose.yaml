@@ -1,4 +1,4 @@
-# On the VPS in ~/agentdeck-relay, managed from Dockhand. It keeps no state.
+# On the VPS in ~/sarathi-relay, managed from Dockhand. It keeps no state.
 services:
   relay:
     build: .

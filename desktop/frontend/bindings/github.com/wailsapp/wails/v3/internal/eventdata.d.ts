@@ -7,10 +7,10 @@ import type { Events } from "@wailsio/runtime";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: Unused imports
-import type * as remote$0 from "../../../../mepkn/agentdeck/desktop/internal/remote/models.js";
+import type * as remote$0 from "../../../../mepkn/sarathi/desktop/internal/remote/models.js";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: Unused imports
-import type * as sessions$0 from "../../../../mepkn/agentdeck/desktop/internal/sessions/models.js";
+import type * as sessions$0 from "../../../../mepkn/sarathi/desktop/internal/sessions/models.js";
 
 declare module "@wailsio/runtime" {
     namespace Events {

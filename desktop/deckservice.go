@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/mepkn/agentdeck/desktop/internal/agents"
-	"github.com/mepkn/agentdeck/desktop/internal/history"
-	"github.com/mepkn/agentdeck/desktop/internal/remote"
-	"github.com/mepkn/agentdeck/desktop/internal/sessions"
-	"github.com/mepkn/agentdeck/desktop/internal/store"
+	"github.com/mepkn/sarathi/desktop/internal/agents"
+	"github.com/mepkn/sarathi/desktop/internal/history"
+	"github.com/mepkn/sarathi/desktop/internal/remote"
+	"github.com/mepkn/sarathi/desktop/internal/sessions"
+	"github.com/mepkn/sarathi/desktop/internal/store"
 	"github.com/skip2/go-qrcode"
 	"github.com/wailsapp/wails/v3/pkg/application"
 )
@@ -91,7 +91,7 @@ func (d *DeckService) RemoteStatus() remote.Status { return d.r.Status() }
 func (d *DeckService) PairPhone() (string, error) {
 	p := d.r.StartPairing()
 	b, _ := json.Marshal(p)
-	png, err := qrcode.Encode("agentdeck://pair?d="+base64.RawURLEncoding.EncodeToString(b), qrcode.Medium, 512)
+	png, err := qrcode.Encode("sarathi://pair?d="+base64.RawURLEncoding.EncodeToString(b), qrcode.Medium, 512)
 	if err != nil {
 		return "", err
 	}
@@ -107,7 +107,7 @@ func (d *DeckService) SearchPrompts(query string) []history.Match { return d.h.S
 // PastSessions lists every logged Claude Code session, newest first.
 func (d *DeckService) PastSessions() []history.Session { return d.h.Sessions() }
 
-// OpenPast adds a logged session to agentdeck, asleep, or returns the one
+// OpenPast adds a logged session to Sarathi, asleep, or returns the one
 // already there.
 func (d *DeckService) OpenPast(agent, agentSessionID, dir, title string, updatedAt int64) (sessions.Info, error) {
 	return d.m.OpenPast(agent, agentSessionID, dir, title, updatedAt)

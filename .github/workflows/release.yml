@@ -1,8 +1,8 @@
 # Builds every app in this repo and attaches them all to one GitHub Release,
 # tagged with the short commit SHA and marked latest, so these links always
 # serve the newest build (the links on dash):
-#   https://github.com/mepkn/agentdeck/releases/latest/download/agentdeck-macos.zip
-#   https://github.com/mepkn/agentdeck/releases/latest/download/agentdeck.apk
+#   https://github.com/mepkn/sarathi/releases/latest/download/sarathi-macos.zip
+#   https://github.com/mepkn/sarathi/releases/latest/download/sarathi.apk
 # Started by hand: Actions tab → Release → Run workflow, or
 # `gh workflow run release.yml`.
 #
@@ -11,7 +11,7 @@
 # variables. Needs the EXPO_TOKEN repository secret.
 #
 # macOS: unsigned universal build (Apple silicon and Intel). On first launch,
-# right-click the app → Open (or `xattr -dr com.apple.quarantine agentdeck.app`).
+# right-click the app → Open (or `xattr -dr com.apple.quarantine sarathi.app`).
 name: Release
 
 on:
@@ -90,12 +90,12 @@ jobs:
           # The in-app update check compares this with the latest release's tag.
           export EXPO_PUBLIC_COMMIT="${GITHUB_SHA::7}"
           npx --yes eas-cli@latest build --platform android --profile preview \
-            --local --non-interactive --output "dist/agentdeck.apk"
+            --local --non-interactive --output "dist/sarathi.apk"
 
       - uses: actions/upload-artifact@v4
         with:
           name: android
-          path: mobile/dist/agentdeck.apk
+          path: mobile/dist/sarathi.apk
           retention-days: 90
           if-no-files-found: error
 
@@ -131,12 +131,12 @@ jobs:
         run: |
           wails3 task darwin:package:universal
           mkdir -p dist
-          ditto -c -k --keepParent "bin/agentdeck.app" "dist/agentdeck-macos.zip"
+          ditto -c -k --keepParent "bin/sarathi.app" "dist/sarathi-macos.zip"
 
       - uses: actions/upload-artifact@v4
         with:
           name: macos
-          path: desktop/dist/agentdeck-macos.zip
+          path: desktop/dist/sarathi-macos.zip
           retention-days: 90
           if-no-files-found: error
 

@@ -89,7 +89,7 @@ export default function SessionScreen() {
         text: "Close",
         style: "destructive",
         onPress: () =>
-          Alert.alert("Close this session?", "It is removed from agentdeck on the Mac too.", [
+          Alert.alert("Close this session?", "It is removed from Sarathi on the Mac too.", [
             { text: "Cancel", style: "cancel" },
             {
               text: "Close",

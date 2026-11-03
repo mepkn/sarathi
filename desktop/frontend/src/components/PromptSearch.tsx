@@ -13,7 +13,7 @@ type Props = {
 };
 
 // Searches every prompt typed in past Claude Code sessions; Enter opens the
-// session, adding it to agentdeck asleep if it isn't there yet.
+// session, adding it to Sarathi asleep if it isn't there yet.
 export function PromptSearch({ open, onOpenChange, onOpened }: Props) {
   const [query, setQuery] = useState("");
   const [found, setFound] = useState<PromptMatch[]>([]);

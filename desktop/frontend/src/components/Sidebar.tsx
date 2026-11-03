@@ -34,7 +34,7 @@ import { dotFor, sortSessions, timeAgo } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { wake } from "@/lib/wake";
 
-const COLLAPSED_KEY = "agentdeck:collapsed";
+const COLLAPSED_KEY = "sarathi:collapsed";
 // The section of sessions logged in folders that aren't projects.
 const OTHER = "other-folders";
 // Matches RecentlyActive in the session manager.
@@ -93,7 +93,7 @@ export function Sidebar({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
-  // Sessions logged by the agent (in a terminal, say) that agentdeck hasn't opened.
+  // Sessions logged by the agent (in a terminal, say) that Sarathi hasn't opened.
   const { past, loadedAt: now } = usePastSessions();
   const known = new Set(sessions.map((s) => s.agentSessionId));
   const unopened = past.filter((x) => !known.has(x.agentSessionId));
@@ -114,7 +114,7 @@ export function Sidebar({
     }
   }
 
-  // A logged session not in agentdeck yet: muted, opened asleep on click.
+  // A logged session not in Sarathi yet: muted, opened asleep on click.
   const pastRow = (x: PastSession) => {
     const active = now - x.updatedAt < ACTIVE_MS;
     return (
@@ -122,7 +122,7 @@ export function Sidebar({
         <button
           type="button"
           onClick={() => openPast(x)}
-          title={active ? "In use in another terminal" : `${agentName(x.agent)}, not opened in agentdeck yet`}
+          title={active ? "In use in another terminal" : `${agentName(x.agent)}, not opened in Sarathi yet`}
           className="relative flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-left text-sm text-muted-foreground hover:bg-sidebar-accent/60 hover:text-foreground"
         >
           <span
@@ -457,7 +457,7 @@ export function Sidebar({
         open={closing !== null}
         onOpenChange={(o) => !o && setClosing(null)}
         title="Close this session?"
-        description="The agent is stopped and the session leaves agentdeck. Its history stays in the agent's own files."
+        description="The agent is stopped and the session leaves Sarathi. Its history stays in the agent's own files."
         confirmLabel="Close"
         onConfirm={async () => {
           if (closing) await Deck.Close(closing.id);
@@ -467,7 +467,7 @@ export function Sidebar({
         open={removing !== null}
         onOpenChange={(o) => !o && setRemoving(null)}
         title={`Remove ${removing?.name}?`}
-        description="Its sessions are stopped and removed from agentdeck. The folder and the agents' own session history stay as they are."
+        description="Its sessions are stopped and removed from Sarathi. The folder and the agents' own session history stay as they are."
         confirmLabel="Remove"
         onConfirm={async () => {
           if (!removing) return;

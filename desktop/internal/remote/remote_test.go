@@ -13,10 +13,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mepkn/agentdeck/desktop/internal/agents"
-	"github.com/mepkn/agentdeck/desktop/internal/sessions"
-	"github.com/mepkn/agentdeck/desktop/internal/store"
-	"github.com/mepkn/agentdeck/relay/hub"
+	"github.com/mepkn/sarathi/desktop/internal/agents"
+	"github.com/mepkn/sarathi/desktop/internal/sessions"
+	"github.com/mepkn/sarathi/desktop/internal/store"
+	"github.com/mepkn/sarathi/relay/hub"
 )
 
 type fakeDeck struct {

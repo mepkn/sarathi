@@ -1,4 +1,4 @@
-# agentdeck
+# Sarathi
 
 A macOS app that gives the AI coding agent CLIs (Claude Code, Codex, Antigravity) a clean chat
 view, with the real terminal one click away, and an Android app to follow and answer them from
@@ -15,7 +15,7 @@ your phone.
 - The session bar opens the project in Finder, Terminal or Zed, or in
   [gitdeck](https://github.com/mepkn/gitdeck) (git client with VS Code-style diffs).
 - Agents keep running with the window closed; the menu bar icon shows how many need you.
-- Checks for updates on launch and from agentdeck → Check for Updates… in the menu bar;
+- Checks for updates on launch and from Sarathi → Check for Updates… in the menu bar;
   installs the latest GitHub release and restarts (running agents stop).
 - **Phone**: pair the Android app by QR code (phone button in the sidebar). It lists the
   sessions, shows the chat, sends messages, answers menus, has quick keys (Esc, Ctrl-C, arrows,
@@ -50,7 +50,7 @@ cd mobile && npm install
 npx expo run:android  # build the dev client, install it and start Metro
 ```
 
-Set `AGENTDECK_RELAY` (e.g. `ws://localhost:8090/relay`) to point the Mac at a local relay
+Set `SARATHI_RELAY` (e.g. `ws://localhost:8090/relay`) to point the Mac at a local relay
 (`cd relay && go run .`).
 
 ## Scripts
@@ -59,8 +59,8 @@ Set `AGENTDECK_RELAY` (e.g. `ws://localhost:8090/relay`) to point the Mac at a l
 |---|---|
 | `scripts/check.sh` | Go vet + tests (relay, desktop), then typecheck, lint and tests of the desktop frontend and the mobile app |
 | `wails3 dev` (in `desktop/`) | Run the app in development mode |
-| `wails3 build` (in `desktop/`) | Build `desktop/bin/agentdeck` |
-| `wails3 package` (in `desktop/`) | Build `desktop/bin/agentdeck.app` |
+| `wails3 build` (in `desktop/`) | Build `desktop/bin/sarathi` |
+| `wails3 package` (in `desktop/`) | Build `desktop/bin/sarathi.app` |
 | `npm run icons` (in `desktop/frontend/`) | Render `build/appicon.png` and `build/tray.png` from the SVGs |
 | `npm run icons` (in `mobile/`) | Render the Android icons into `mobile/assets/images/` |
 | `scripts/build-android.sh <preview\|production> <cloud\|local>` | EAS build of the Android app |
@@ -71,11 +71,11 @@ Set `AGENTDECK_RELAY` (e.g. `ws://localhost:8090/relay`) to point the Mac at a l
 ## Deployment
 
 - **Relay**: `scripts/deploy-relay.sh` builds it in Docker on the VPS (`relay/compose.yaml`,
-  `127.0.0.1:8092`) behind Caddy at `wss://agentdeck.pknspace.com/relay`. `relay/.env.prod.local`
+  `127.0.0.1:8092`) behind Caddy at `wss://sarathi.pknspace.com/relay`. `relay/.env.prod.local`
   holds `DEPLOY_HOST`, `DEPLOY_PORT` and `RELAY_DIR` (see `relay/.env.example`).
 - **Release**: `.github/workflows/release.yml` (run by hand: `gh workflow run release.yml`)
   builds the Android preview APK and the macOS app side by side and attaches both,
-  `agentdeck.apk` and `agentdeck-macos.zip`, to one GitHub Release (tagged with the short commit SHA, marked latest), so
+  `sarathi.apk` and `sarathi-macos.zip`, to one GitHub Release (tagged with the short commit SHA, marked latest), so
   `releases/latest/download/<file>` works for each. The Android build needs the `EXPO_TOKEN` repo secret (from
   `mobile/.eas-token`). Push uses Firebase project `agent-deck-de70d`: `mobile/google-services.json`
   is committed; its FCM service account key is uploaded to EAS, not to the repo.
@@ -92,18 +92,18 @@ Set `AGENTDECK_RELAY` (e.g. `ws://localhost:8090/relay`) to point the Mac at a l
 - The chat box types into the PTY (bracketed paste for multi-line text), so chat and terminal are
   one session, and sessions stay resumable in the CLIs themselves.
 - `internal/shellenv` loads the login shell's `PATH`, since apps opened from Finder lack it.
-- State (projects, sessions) is in `~/Library/Application Support/agentdeck/state.json`.
+- State (projects, sessions) is in `~/Library/Application Support/sarathi/state.json`.
 - **Updates** (`desktop/update.go`): release builds carry their short commit SHA
   (`-X main.commit`, set in `desktop/build/darwin/Taskfile.yml`). On launch and from the menu, the
   app compares it with the tag of the latest GitHub release; if they differ it downloads
-  `agentdeck-macos.zip` to a temp folder, quits, swaps the `.app` in place (putting the old one back
+  `sarathi-macos.zip` to a temp folder, quits, swaps the `.app` in place (putting the old one back
   if that fails), deletes the download and relaunches. The app's folder must be writable. A release
   made for an Android-only change also counts as an update. Builds without a SHA skip the check.
 - **Phone updates** (`mobile/src/lib/update.ts`): the Release workflow builds the APK with
   `EXPO_PUBLIC_COMMIT` set to the same short SHA. On launch the app asks GitHub for the latest
-  release; a different tag offers the update. `agentdeck.apk` is downloaded to the app's cache
+  release; a different tag offers the update. `sarathi.apk` is downloaded to the app's cache
   (`update/`) and opened with `INSTALL_PACKAGE` (needs `REQUEST_INSTALL_PACKAGES`; Android asks once
-  to allow installs from agentdeck). Every launch deletes that folder. Dev builds skip the check. An
+  to allow installs from Sarathi). Every launch deletes that folder. Dev builds skip the check. An
   APK downloaded by hand in a browser isn't the app's to delete.
 - **Phone link** (`desktop/internal/remote`, `mobile/src/lib/link.ts`): each device has an Ed25519
   key (its relay ID) and an X25519 key. The relay checks a signed challenge, then forwards opaque
@@ -112,4 +112,4 @@ Set `AGENTDECK_RELAY` (e.g. `ws://localhost:8090/relay`) to point the Mac at a l
   old or repeated ones are dropped. The QR code holds the relay URL, the Mac's keys and a one-time
   secret. The Mac connects to the relay only while a phone is paired or pairing.
 - Phone keys are in the Android keystore (`expo-secure-store`); the Mac's and the paired phones
-  are in `~/Library/Application Support/agentdeck/remote.json` (mode 600).
+  are in `~/Library/Application Support/sarathi/remote.json` (mode 600).

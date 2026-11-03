@@ -115,7 +115,7 @@ export function DeckProvider({ children }: { children: ReactNode }) {
       const l = await new Promise<Link>((resolve, reject) => {
         const timer = setTimeout(() => {
           l.stop();
-          reject(new LinkError(`Couldn't reach ${m.name}. Is agentdeck open on the Mac?`));
+          reject(new LinkError(`Couldn't reach ${m.name}. Is Sarathi open on the Mac?`));
         }, PAIR_WAIT);
         const l = new Link(
           identity,

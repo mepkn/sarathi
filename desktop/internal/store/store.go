@@ -1,5 +1,5 @@
 // Package store keeps projects and sessions in a JSON file under
-// ~/Library/Application Support/agentdeck.
+// ~/Library/Application Support/sarathi.
 package store
 
 import (
@@ -42,7 +42,7 @@ func DefaultPath() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(dir, "agentdeck", "state.json"), nil
+	return filepath.Join(dir, "sarathi", "state.json"), nil
 }
 
 func Open(path string) (*Store, error) {

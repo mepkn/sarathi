@@ -61,7 +61,7 @@ func startRun(bin string, args []string, dir string) (*run, error) {
 }
 
 // childEnv is the app's env for a terminal, minus Claude Code's own markers
-// in case agentdeck itself was started from a Claude Code session.
+// in case Sarathi itself was started from a Claude Code session.
 func childEnv() []string {
 	var env []string
 	for _, kv := range os.Environ() {
@@ -71,7 +71,7 @@ func childEnv() []string {
 		}
 		env = append(env, kv)
 	}
-	return append(env, "TERM=xterm-256color", "COLORTERM=truecolor", "TERM_PROGRAM=agentdeck")
+	return append(env, "TERM=xterm-256color", "COLORTERM=truecolor", "TERM_PROGRAM=sarathi")
 }
 
 type replyWriter struct{ f *os.File }

@@ -84,7 +84,7 @@ export function OpenIn(projectID: string, app: string): $CancellablePromise<void
 }
 
 /**
- * OpenPast adds a logged session to agentdeck, asleep, or returns the one
+ * OpenPast adds a logged session to Sarathi, asleep, or returns the one
  * already there.
  */
 export function OpenPast(agent: string, agentSessionID: string, dir: string, title: string, updatedAt: number): $CancellablePromise<sessions$0.Info> {

@@ -4,7 +4,7 @@ import { fromUtf8, unb64 } from "@/lib/b64";
 export type Mac = { relay: string; id: string; box: string; name: string };
 export type PairCode = Mac & { secret: string };
 
-/** Reads agentdeck://pair?d=… (or the bare d value) from the Mac's QR code. */
+/** Reads sarathi://pair?d=… (or the bare d value) from the Mac's QR code. */
 export function parsePairCode(text: string): PairCode | null {
   const s = text.trim();
   const m = /[?&]d=([A-Za-z0-9_-]+)/.exec(s);

@@ -23,10 +23,10 @@ import (
 var commit = "dev"
 
 const (
-	updateName   = "agentdeck"
-	updateRepo   = "mepkn/agentdeck"
-	updateAsset  = "agentdeck-macos.zip"
-	updatePrefix = "agentdeck-update-"
+	updateName   = "sarathi"
+	updateRepo   = "mepkn/sarathi"
+	updateAsset  = "sarathi-macos.zip"
+	updatePrefix = "sarathi-update-"
 )
 
 type updater struct {

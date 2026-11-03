@@ -23,7 +23,7 @@ import (
 var commit = "dev"
 
 const (
-	updateName   = "sarathi"
+	updateName   = "Sarathi"
 	updateRepo   = "mepkn/sarathi"
 	updateAsset  = "sarathi-macos.zip"
 	updatePrefix = "sarathi-update-"

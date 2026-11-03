@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "347690458847",
-    "project_id": "agent-deck-de70d",
-    "storage_bucket": "agent-deck-de70d.firebasestorage.app"
+    "project_number": "639568295874",
+    "project_id": "sarathi-c88ea",
+    "storage_bucket": "sarathi-c88ea.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:347690458847:android:fbc0167a5b90172641d36a",
+        "mobilesdk_app_id": "1:639568295874:android:e4108504fdb3cd27bd485b",
         "android_client_info": {
-          "package_name": "com.pknspace.agentdeck"
+          "package_name": "com.pknspace.sarathi"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBfB-7mYHhb8GX2cfMb_bVK9EO1FSkkXSE"
+          "current_key": "AIzaSyARBVwbZrv3QcOfQzlqsMhwUgP5NfRHbvY"
         }
       ],
       "services": {
